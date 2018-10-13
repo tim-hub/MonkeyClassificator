@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"><h1>An Awesome Monkey Classificator</h1></div>
+</div>
+<div class="row">
+    <div class="col-md-4 card badge-secondary">
+        <a href="/prepare" class="btn-dark">
+            <h2>1. Prepare Model</h2>
+        </a>
+
+    </div>
+    <div class="col-md-4 card badge-success">
+        <h2>2. Upload and Predict</h2>
+    </div>
+    <div class="col-md-4 card badge-primary">
+        <h2>3. Get result</h2>
+    </div>
+
+</div>
+<div class="row">
+
+<div class="col-4">
+    <img
+    class="img-fluid"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Macaca_sinica_-_01.jpg/682px-Macaca_sinica_-_01.jpg">
+</div>
+
+<div class="col-4">
+
+
+    <form enctype="multipart/form-data" method="post">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Image</label>
+        <input type=file name=file class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+        <small id="emailHelp" class="form-text text-muted">Upload a monkey picture here.</small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit to Predict</button>
+    </form>
+    <hr>
+    {% if result %}
+    {{result}}
+    {% endif %}
+
+    <ol class="list-group">
+        {% for key,value in labels.items() %}
+            <li class="list-group-item">
+                {{ key }}, {{value}}
+            </li>
+        {% endfor %}
+
+    </ol>
+
+
+</div>
+
+<div class="col-4">
+<img
+class="img-fluid"
+src="https://ichef.bbci.co.uk/news/320/cpsprodpb/025B/production/_85730600_monkey2.jpg">
+
+<img
+class="img-fluid"
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Macaca_fascicularis_in_Lopburi.JPG/1024px-Macaca_fascicularis_in_Lopburi.JPG">
+</div>
+
+
+
+<div>
+    <small>
+    all picture on the website are from Wikipedia and BBC. They are only used for assignment demo.
+    </small>
+</div>
+</div>
+
+{% endblock%}
